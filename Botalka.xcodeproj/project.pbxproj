@@ -7,25 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		355BCB1925F3A7B200C3E6A1 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BCB1825F3A7B200C3E6A1 /* MainPresenter.swift */; };
 		35B5616725F3953100C53CC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B5616625F3953100C53CC0 /* AppDelegate.swift */; };
 		35B5616925F3953100C53CC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B5616825F3953100C53CC0 /* SceneDelegate.swift */; };
-		35B5616B25F3953100C53CC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B5616A25F3953100C53CC0 /* ViewController.swift */; };
 		35B5616E25F3953100C53CC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B5616C25F3953100C53CC0 /* Main.storyboard */; };
 		35B5617125F3953100C53CC0 /* Botalka.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 35B5616F25F3953100C53CC0 /* Botalka.xcdatamodeld */; };
 		35B5617325F3953100C53CC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B5617225F3953100C53CC0 /* Assets.xcassets */; };
 		35B5617625F3953100C53CC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B5617425F3953100C53CC0 /* LaunchScreen.storyboard */; };
+		35B5618025F3955D00C53CC0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B5617F25F3955D00C53CC0 /* MainViewController.swift */; };
+		35B5619B25F39D5F00C53CC0 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B5619A25F39D5F00C53CC0 /* Animal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		355BCB1825F3A7B200C3E6A1 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		35B5616325F3953100C53CC0 /* Botalka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Botalka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B5616625F3953100C53CC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35B5616825F3953100C53CC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		35B5616A25F3953100C53CC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		35B5616D25F3953100C53CC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		35B5617025F3953100C53CC0 /* Botalka.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Botalka.xcdatamodel; sourceTree = "<group>"; };
 		35B5617225F3953100C53CC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		35B5617525F3953100C53CC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35B5617725F3953100C53CC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35B5617F25F3955D00C53CC0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; usesTabs = 0; };
+		35B5619A25F39D5F00C53CC0 /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,146 @@
 		35B5616525F3953100C53CC0 /* Botalka */ = {
 			isa = PBXGroup;
 			children = (
-				35B5616625F3953100C53CC0 /* AppDelegate.swift */,
-				35B5616825F3953100C53CC0 /* SceneDelegate.swift */,
-				35B5616A25F3953100C53CC0 /* ViewController.swift */,
-				35B5616C25F3953100C53CC0 /* Main.storyboard */,
-				35B5617225F3953100C53CC0 /* Assets.xcassets */,
+				35B5619825F39C8C00C53CC0 /* Model */,
+				35B5618225F3958000C53CC0 /* MainModule */,
+				35B5618D25F3981900C53CC0 /* CollectionModule */,
+				35B5618E25F3982C00C53CC0 /* ShopModule */,
+				35B5618A25F397E100C53CC0 /* HistoryModule */,
+				35B5618F25F3983A00C53CC0 /* InfoModule */,
 				35B5617425F3953100C53CC0 /* LaunchScreen.storyboard */,
-				35B5617725F3953100C53CC0 /* Info.plist */,
+				35B5616825F3953100C53CC0 /* SceneDelegate.swift */,
+				35B5616625F3953100C53CC0 /* AppDelegate.swift */,
+				35B5617225F3953100C53CC0 /* Assets.xcassets */,
 				35B5616F25F3953100C53CC0 /* Botalka.xcdatamodeld */,
+				35B5617725F3953100C53CC0 /* Info.plist */,
+				35B5616C25F3953100C53CC0 /* Main.storyboard */,
 			);
 			path = Botalka;
+			sourceTree = "<group>";
+		};
+		35B5618225F3958000C53CC0 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				35B5618725F395D400C53CC0 /* Presenter */,
+				35B5618625F395CC00C53CC0 /* View */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		35B5618625F395CC00C53CC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				35B5617F25F3955D00C53CC0 /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35B5618725F395D400C53CC0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				355BCB1825F3A7B200C3E6A1 /* MainPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		35B5618A25F397E100C53CC0 /* HistoryModule */ = {
+			isa = PBXGroup;
+			children = (
+				35B5618C25F397F500C53CC0 /* Presenter */,
+				35B5618B25F397EC00C53CC0 /* View */,
+			);
+			path = HistoryModule;
+			sourceTree = "<group>";
+		};
+		35B5618B25F397EC00C53CC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35B5618C25F397F500C53CC0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		35B5618D25F3981900C53CC0 /* CollectionModule */ = {
+			isa = PBXGroup;
+			children = (
+				35B5619125F3984800C53CC0 /* Presenter */,
+				35B5619025F3984300C53CC0 /* View */,
+			);
+			path = CollectionModule;
+			sourceTree = "<group>";
+		};
+		35B5618E25F3982C00C53CC0 /* ShopModule */ = {
+			isa = PBXGroup;
+			children = (
+				35B5619325F3985200C53CC0 /* Presenter */,
+				35B5619225F3984E00C53CC0 /* View */,
+			);
+			path = ShopModule;
+			sourceTree = "<group>";
+		};
+		35B5618F25F3983A00C53CC0 /* InfoModule */ = {
+			isa = PBXGroup;
+			children = (
+				35B5619525F3986200C53CC0 /* Presenter */,
+				35B5619425F3985700C53CC0 /* View */,
+			);
+			path = InfoModule;
+			sourceTree = "<group>";
+		};
+		35B5619025F3984300C53CC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35B5619125F3984800C53CC0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		35B5619225F3984E00C53CC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35B5619325F3985200C53CC0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		35B5619425F3985700C53CC0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		35B5619525F3986200C53CC0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		35B5619825F39C8C00C53CC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				35B5619A25F39D5F00C53CC0 /* Animal.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,10 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35B5616B25F3953100C53CC0 /* ViewController.swift in Sources */,
 				35B5616725F3953100C53CC0 /* AppDelegate.swift in Sources */,
+				355BCB1925F3A7B200C3E6A1 /* MainPresenter.swift in Sources */,
 				35B5617125F3953100C53CC0 /* Botalka.xcdatamodeld in Sources */,
 				35B5616925F3953100C53CC0 /* SceneDelegate.swift in Sources */,
+				35B5618025F3955D00C53CC0 /* MainViewController.swift in Sources */,
+				35B5619B25F39D5F00C53CC0 /* Animal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
