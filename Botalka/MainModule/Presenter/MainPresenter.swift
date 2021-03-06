@@ -16,7 +16,7 @@ import Foundation
 
 class MainPresenter {
 
-    func Timer(timerLabel: UILabel, minutes: Int, seconds: Int){
+    func Timer(timerLabel: UILabel, minutes: Int, seconds: Int, timesetterDatePicker: UIDatePicker){
         timerLabel.isHidden = false
         timerLabel.text = "\(Int(minutes)):\(Int(seconds))"
         var time = 60*minutes + seconds
@@ -24,16 +24,18 @@ class MainPresenter {
                     if time == 0{
                         timer.invalidate()
                         timerLabel.text = "00:00"
+                        timesetterDatePicker.isHidden = false
+                        timerLabel.isHidden = true
                     }
                     else{
                         timerLabel.text = "\(Int(time/60)):\(Int(time - Int(time/60) * 60))"
                     } })
     }
     
-    func TimerButton(time: TimeInterval, timerLabel: UILabel){
+    func TimerButton(time: TimeInterval, timerLabel: UILabel, timesetterDatePicker: UIDatePicker){
+        var controllerr = MainViewController()
         let minutes = time / 60
         let seconds = time - minutes * 60
-        Timer(timerLabel: timerLabel, minutes: Int(minutes), seconds: Int(seconds))
-       
+        Timer(timerLabel: timerLabel, minutes: Int(minutes), seconds: Int(seconds), timesetterDatePicker: timesetterDatePicker)
     }
 }

@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     @IBAction func buttonFunc(_ sender: Any) {
         let time = timesetterDatePicker.countDownDuration
         timesetterDatePicker.isHidden = true
-        presenter.TimerButton(time: time, timerLabel: timerLabel)
+        presenter.TimerButton(time: time, timerLabel: timerLabel, timesetterDatePicker: timesetterDatePicker)
     }
     
     
