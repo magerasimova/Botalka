@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		355BCB1925F3A7B200C3E6A1 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355BCB1825F3A7B200C3E6A1 /* MainPresenter.swift */; };
 		35802E2E2621FE7800FEE644 /* Data.json in Resources */ = {isa = PBXBuildFile; fileRef = 35802E2D2621FE7800FEE644 /* Data.json */; };
+		35802E342622053600FEE644 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35802E332622053600FEE644 /* DataBase.swift */; };
 		35B5616725F3953100C53CC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B5616625F3953100C53CC0 /* AppDelegate.swift */; };
 		35B5616925F3953100C53CC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B5616825F3953100C53CC0 /* SceneDelegate.swift */; };
 		35B5616E25F3953100C53CC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B5616C25F3953100C53CC0 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		355BCB1825F3A7B200C3E6A1 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		35802E2D2621FE7800FEE644 /* Data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Data.json; sourceTree = "<group>"; };
+		35802E332622053600FEE644 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		35B5616325F3953100C53CC0 /* Botalka.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Botalka.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B5616625F3953100C53CC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35B5616825F3953100C53CC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				35B5619A25F39D5F00C53CC0 /* Animal.swift */,
+				35802E332622053600FEE644 /* DataBase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				35B5616725F3953100C53CC0 /* AppDelegate.swift in Sources */,
 				9D072E2025F3F1B6004DBA3F /* HistoryViewController.swift in Sources */,
 				9D072E1A25F3F196004DBA3F /* ShopViewController.swift in Sources */,
+				35802E342622053600FEE644 /* DataBase.swift in Sources */,
 				9D072E1725F3F186004DBA3F /* ShopPresenter.swift in Sources */,
 				355BCB1925F3A7B200C3E6A1 /* MainPresenter.swift in Sources */,
 				35B5617125F3953100C53CC0 /* Botalka.xcdatamodeld in Sources */,

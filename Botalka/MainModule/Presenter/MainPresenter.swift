@@ -18,22 +18,24 @@ class MainPresenter {
     
     weak var view: MainViewController!
     var flag: Int!
-    var money: Int!
+    var money: Int?
+    var history: [String]?
+    var pictures: [String]?
+    var motivation: [String]?
 
-    init(with view: MainViewController, money: Int) {
+    init(with view: MainViewController) {
         self.view = view
         self.flag = 1
-        self.money = money
     }
     
 
-    public func Timer(timerLabel: UILabel, minutes: Int, seconds: Int, timesetterDatePicker: UIDatePicker){
+    public func Timer(money: Int, timerLabel: UILabel, minutes: Int, seconds: Int, timesetterDatePicker: UIDatePicker){
         
         IsHiddenBegin(timerlabel: timerLabel)
         
         timerLabel.text = "\(Int(minutes)):\(Int(seconds))"
         var time = 60*minutes + seconds
-        var time2 = time
+        let points = time
         _ = Foundation.Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: {timer in time -= 1;
                     if self.flag == 0{
                         timer.invalidate()
@@ -46,8 +48,7 @@ class MainPresenter {
                         timerLabel.text = "00:00"
                         self.IsHiddenEnds(timesetterDatePicker: timesetterDatePicker, timerLabel: timerLabel)
                         self.TimerEnds()
-                        self.money += 10*time2
-                        self.view.LoadMoney(money: self.money)
+                        self.view.LoadMoney(money: money + 10*points)
                     }
                     else{
                         timerLabel.text = "\(Int(time/60)):\(Int(time - Int(time/60) * 60))"
@@ -55,11 +56,11 @@ class MainPresenter {
                     } })
     }
     
-    func TimerButton(time: TimeInterval, timerLabel: UILabel, timesetterDatePicker: UIDatePicker){
+    func TimerButton(money: Int, time: TimeInterval, timerLabel: UILabel, timesetterDatePicker: UIDatePicker){
 //        var controller = MainViewController()
         let minutes = time / 60
         let seconds = time - minutes * 60
-        Timer(timerLabel: timerLabel, minutes: Int(minutes), seconds: Int(seconds), timesetterDatePicker: timesetterDatePicker)
+        Timer(money: money, timerLabel: timerLabel, minutes: Int(minutes), seconds: Int(seconds), timesetterDatePicker: timesetterDatePicker)
     }
     
     func TimerStop(timerLabel: UILabel, timesetterDatePicker: UIDatePicker){
@@ -89,7 +90,24 @@ class MainPresenter {
         view?.present(alert, animated: true, completion: nil)
     }
     
-    func LoadMoney(){
-        
+    func LoadData() -> Int?{
+        if let path = Bundle.main.path(forResource: "Data", ofType: "json") {
+            do {
+                  let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                  let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                  if let jsonResult = jsonResult as? Dictionary<String, AnyObject>{
+                    self.money = jsonResult["money"] as? Int
+                    self.history = jsonResult["history"] as? [String]
+                    self.pictures = jsonResult["pictures"] as? [String]
+                    self.motivation = jsonResult["motivation"] as? [String]
+                  }
+              } catch {
+                   print("error")
+              }
+        }
+        view.LoadImage(name: self.pictures![0])
+        view.LoadMoney(money: self.money!)
+        view.LoadMotivation(motivation: self.motivation!)
+        return self.money
     }
 }

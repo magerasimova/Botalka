@@ -19,23 +19,22 @@ class MainViewController: UIViewController {
     @IBOutlet weak var motivationLabel: UILabel!
     
     var money: Int!
-    lazy var presenter = MainPresenter(with: self, money: money)
+    var motivation: [String]!
+    lazy var presenter = MainPresenter(with: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let color = UIColor(named: "Color")
         self.view.backgroundColor = color
-        self.money = 0
-        self.LoadImage(name: "kittenmaow.png")
-        self.LoadMoney(money: money)
-        self.LoadMotivation(motivation: "ЛОХ")
+        self.money = presenter.LoadData()
     }
     
     @IBAction func buttonFunc(_ sender: Any) {
         let time = timesetterDatePicker.countDownDuration
         timesetterDatePicker.isHidden = true
-        presenter.TimerButton(time: time, timerLabel: timerLabel, timesetterDatePicker: timesetterDatePicker)
+        presenter.TimerButton(money: self.money, time: time, timerLabel: timerLabel, timesetterDatePicker: timesetterDatePicker)
     }
+    
     @IBAction func endButtonFuc(_ sender: Any) {
         let alert = UIAlertController(title: "Ты уверен, что хочешь закончить попытку?", message: nil, preferredStyle: .alert)
         
@@ -55,8 +54,9 @@ class MainViewController: UIViewController {
         self.money = money
     }
     
-    func LoadMotivation(motivation: String){
-        self.motivationLabel.text = motivation
+    func LoadMotivation(motivation: [String]){
+        self.motivationLabel.text = motivation[0]
+        self.motivation = motivation
     }
 
 }
