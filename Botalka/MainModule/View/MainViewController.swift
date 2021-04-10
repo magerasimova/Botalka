@@ -15,14 +15,20 @@ class MainViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var endButton: UIButton!
+    @IBOutlet weak var moneyLabel: UILabel!
+    @IBOutlet weak var motivationLabel: UILabel!
     
-    lazy var presenter = MainPresenter(with: self)
+    var money: Int!
+    lazy var presenter = MainPresenter(with: self, money: money)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let color = UIColor(named: "Color")
         self.view.backgroundColor = color
-        imageView.image = UIImage(named: "kittenmaow.png")
+        self.money = 0
+        self.LoadImage(name: "kittenmaow.png")
+        self.LoadMoney(money: money)
+        self.LoadMotivation(motivation: "ЛОХ")
     }
     
     @IBAction func buttonFunc(_ sender: Any) {
@@ -40,6 +46,17 @@ class MainViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func LoadImage(name: String){
+        imageView.image = UIImage(named: name)
+    }
     
+    func LoadMoney(money: Int){
+        self.moneyLabel.text = "Баланс: \(money)"
+        self.money = money
+    }
+    
+    func LoadMotivation(motivation: String){
+        self.motivationLabel.text = motivation
+    }
 
 }

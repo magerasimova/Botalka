@@ -16,12 +16,14 @@ import Foundation
 
 class MainPresenter {
     
-    weak var view: MainViewController?
-    var k: Int!
+    weak var view: MainViewController!
+    var flag: Int!
+    var money: Int!
 
-    init(with view: MainViewController) {
+    init(with view: MainViewController, money: Int) {
         self.view = view
-        self.k = 1
+        self.flag = 1
+        self.money = money
     }
     
 
@@ -31,18 +33,21 @@ class MainPresenter {
         
         timerLabel.text = "\(Int(minutes)):\(Int(seconds))"
         var time = 60*minutes + seconds
+        var time2 = time
         _ = Foundation.Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: {timer in time -= 1;
-                    if self.k == 0{
+                    if self.flag == 0{
                         timer.invalidate()
                         timerLabel.text = "00:00"
                         self.IsHiddenEnds(timesetterDatePicker: timesetterDatePicker, timerLabel: timerLabel)
-                        self.k = 1
+                        self.flag = 1
                     }
                     else if time == 0 {
                         timer.invalidate()
                         timerLabel.text = "00:00"
                         self.IsHiddenEnds(timesetterDatePicker: timesetterDatePicker, timerLabel: timerLabel)
                         self.TimerEnds()
+                        self.money += 10*time2
+                        self.view.LoadMoney(money: self.money)
                     }
                     else{
                         timerLabel.text = "\(Int(time/60)):\(Int(time - Int(time/60) * 60))"
@@ -58,7 +63,7 @@ class MainPresenter {
     }
     
     func TimerStop(timerLabel: UILabel, timesetterDatePicker: UIDatePicker){
-        self.k = 0
+        self.flag = 0
         IsHiddenEnds(timesetterDatePicker: timesetterDatePicker, timerLabel: timerLabel)
     }
     
@@ -82,5 +87,9 @@ class MainPresenter {
         let alert = UIAlertController(title: "Молодец, ты справился с задачей! ДЕРЖИ НИХУЯ", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "от души", style: .default, handler: nil))
         view?.present(alert, animated: true, completion: nil)
+    }
+    
+    func LoadMoney(){
+        
     }
 }

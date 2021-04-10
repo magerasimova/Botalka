@@ -9,5 +9,4 @@ import Foundation
 
 struct Animal {
     var name: String
-    
 }
