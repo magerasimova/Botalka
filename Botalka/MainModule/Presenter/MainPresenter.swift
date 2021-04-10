@@ -17,9 +17,11 @@ import Foundation
 class MainPresenter {
     
     weak var view: MainViewController?
+    var k: Int!
 
     init(with view: MainViewController) {
         self.view = view
+        self.k = 1
     }
     
 
@@ -30,7 +32,13 @@ class MainPresenter {
         timerLabel.text = "\(Int(minutes)):\(Int(seconds))"
         var time = 60*minutes + seconds
         _ = Foundation.Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: {timer in time -= 1;
-                    if time == 0{
+                    if self.k == 0{
+                        timer.invalidate()
+                        timerLabel.text = "00:00"
+                        self.IsHiddenEnds(timesetterDatePicker: timesetterDatePicker, timerLabel: timerLabel)
+                        self.k = 1
+                    }
+                    else if time == 0 {
                         timer.invalidate()
                         timerLabel.text = "00:00"
                         self.IsHiddenEnds(timesetterDatePicker: timesetterDatePicker, timerLabel: timerLabel)
@@ -50,7 +58,7 @@ class MainPresenter {
     }
     
     func TimerStop(timerLabel: UILabel, timesetterDatePicker: UIDatePicker){
-       // Timer(timerLabel: timerLabel, minutes: 0, seconds: 0, timesetterDatePicker: timesetterDatePicker)
+        self.k = 0
         IsHiddenEnds(timesetterDatePicker: timesetterDatePicker, timerLabel: timerLabel)
     }
     
@@ -71,7 +79,7 @@ class MainPresenter {
     }
     
     func TimerEnds() {
-        let alert = UIAlertController(title: "Молодец, ты справился с задачей! ДЕРИЖ НИХУЯ", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Молодец, ты справился с задачей! ДЕРЖИ НИХУЯ", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "от души", style: .default, handler: nil))
         view?.present(alert, animated: true, completion: nil)
     }
