@@ -16,33 +16,39 @@ import Foundation
 
 class MainPresenter {
     
-    weak var view: MainViewController?
-    var k: Int!
+    weak var view: MainViewController!
+    var flag: Int!
+    var money: Int?
+    var history: [String]?
+    var pictures: [String]?
+    var motivation: [String]?
 
     init(with view: MainViewController) {
         self.view = view
-        self.k = 1
+        self.flag = 1
     }
     
 
-    public func Timer(timerLabel: UILabel, minutes: Int, seconds: Int, timesetterDatePicker: UIDatePicker){
+    public func Timer(money: Int, timerLabel: UILabel, minutes: Int, seconds: Int, timesetterDatePicker: UIDatePicker){
         
         IsHiddenBegin(timerlabel: timerLabel)
         
         timerLabel.text = "\(Int(minutes)):\(Int(seconds))"
         var time = 60*minutes + seconds
+        let points = time
         _ = Foundation.Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: {timer in time -= 1;
-                    if self.k == 0{
+                    if self.flag == 0{
                         timer.invalidate()
                         timerLabel.text = "00:00"
                         self.IsHiddenEnds(timesetterDatePicker: timesetterDatePicker, timerLabel: timerLabel)
-                        self.k = 1
+                        self.flag = 1
                     }
                     else if time == 0 {
                         timer.invalidate()
                         timerLabel.text = "00:00"
                         self.IsHiddenEnds(timesetterDatePicker: timesetterDatePicker, timerLabel: timerLabel)
                         self.TimerEnds()
+                        self.view.LoadMoney(money: money + 10*points)
                     }
                     else{
                         timerLabel.text = "\(Int(time/60)):\(Int(time - Int(time/60) * 60))"
@@ -50,15 +56,15 @@ class MainPresenter {
                     } })
     }
     
-    func TimerButton(time: TimeInterval, timerLabel: UILabel, timesetterDatePicker: UIDatePicker){
+    func TimerButton(money: Int, time: TimeInterval, timerLabel: UILabel, timesetterDatePicker: UIDatePicker){
 //        var controller = MainViewController()
         let minutes = time / 60
         let seconds = time - minutes * 60
-        Timer(timerLabel: timerLabel, minutes: Int(minutes), seconds: Int(seconds), timesetterDatePicker: timesetterDatePicker)
+        Timer(money: money, timerLabel: timerLabel, minutes: Int(minutes), seconds: Int(seconds), timesetterDatePicker: timesetterDatePicker)
     }
     
     func TimerStop(timerLabel: UILabel, timesetterDatePicker: UIDatePicker){
-        self.k = 0
+        self.flag = 0
         IsHiddenEnds(timesetterDatePicker: timesetterDatePicker, timerLabel: timerLabel)
     }
     
@@ -82,5 +88,26 @@ class MainPresenter {
         let alert = UIAlertController(title: "Молодец, ты справился с задачей! ДЕРЖИ НИХУЯ", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "от души", style: .default, handler: nil))
         view?.present(alert, animated: true, completion: nil)
+    }
+    
+    func LoadData() -> Int?{
+        if let path = Bundle.main.path(forResource: "Data", ofType: "json") {
+            do {
+                  let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                  let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                  if let jsonResult = jsonResult as? Dictionary<String, AnyObject>{
+                    self.money = jsonResult["money"] as? Int
+                    self.history = jsonResult["history"] as? [String]
+                    self.pictures = jsonResult["pictures"] as? [String]
+                    self.motivation = jsonResult["motivation"] as? [String]
+                  }
+              } catch {
+                   print("error")
+              }
+        }
+        view.LoadImage(name: self.pictures![0])
+        view.LoadMoney(money: self.money!)
+        view.LoadMotivation(motivation: self.motivation!)
+        return self.money
     }
 }

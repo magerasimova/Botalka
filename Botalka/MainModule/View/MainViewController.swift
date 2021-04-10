@@ -15,21 +15,26 @@ class MainViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var endButton: UIButton!
+    @IBOutlet weak var moneyLabel: UILabel!
+    @IBOutlet weak var motivationLabel: UILabel!
     
+    var money: Int!
+    var motivation: [String]!
     lazy var presenter = MainPresenter(with: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let color = UIColor(named: "Color")
         self.view.backgroundColor = color
-        imageView.image = UIImage(named: "kittenmaow.png")
+        self.money = presenter.LoadData()
     }
     
     @IBAction func buttonFunc(_ sender: Any) {
         let time = timesetterDatePicker.countDownDuration
         timesetterDatePicker.isHidden = true
-        presenter.TimerButton(time: time, timerLabel: timerLabel, timesetterDatePicker: timesetterDatePicker)
+        presenter.TimerButton(money: self.money, time: time, timerLabel: timerLabel, timesetterDatePicker: timesetterDatePicker)
     }
+    
     @IBAction func endButtonFuc(_ sender: Any) {
         let alert = UIAlertController(title: "Ты уверен, что хочешь закончить попытку?", message: nil, preferredStyle: .alert)
         
@@ -40,6 +45,18 @@ class MainViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func LoadImage(name: String){
+        imageView.image = UIImage(named: name)
+    }
     
+    func LoadMoney(money: Int){
+        self.moneyLabel.text = "Баланс: \(money)"
+        self.money = money
+    }
+    
+    func LoadMotivation(motivation: [String]){
+        self.motivationLabel.text = motivation[0]
+        self.motivation = motivation
+    }
 
 }
